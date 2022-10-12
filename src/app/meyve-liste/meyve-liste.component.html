@@ -1,0 +1,19 @@
+<div class="form-group">
+    <table class="table">
+        <thead>
+            <th>#</th>
+            <th>Meyve Adı</th>
+            <th>Ekleme Tarihi</th>
+            <th>Sil</th>
+        </thead>
+           <tbody *ngFor="let item of meyveler let i = index">
+            <tr>
+                <th>{{i+1}}</th>
+                <th>{{item.MeyveAd}}</th>
+                <th>{{item.Tarih | date:'dd.MM.yyyy hh.mm.ss'}}</th>
+                <th><button (click)="delete(item)" class="btn btn-danger">Sil</button></th>
+            </tr>
+            
+           </tbody>
+    </table>
+  </div>

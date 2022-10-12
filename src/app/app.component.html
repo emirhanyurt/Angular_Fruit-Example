@@ -1,21 +1,11 @@
 <div class="container">
     <form>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email adres</label>
-          <input type="email" [class]="changeClass(email)" id="exampleInputEmail1" [(ngModel)]="email"
-           [ngModelOptions]="{standalone : true}"  (change)="checkAvaible()">
-          <div id="emailHelp" class="form-text">Mail Adresinizi Kimse İle paylaşmayınız</div>
+          <label  class="form-label">Meyve Adı</label>
+          <input type="text" class="form-control" [(ngModel)]="meyve"
+           [ngModelOptions]="{standalone : true}" >
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Şifre</label>
-          <input type="password" [class]="changeClass(password)"  [(ngModel)]="password" [ngModelOptions]="{standalone : true}" (change)="checkAvaible()">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="check" (change)="checkAvaible()"  [ngModelOptions]="{standalone : true}">
-          <label class="form-check-label" for="exampleCheck1">Kullanıcı Sözleşmesini Onayla</label>
-        </div>
-        <button *ngIf="button" type="submit" [disabled]="!button" class="btn btn-primary">Kaydol</button>
-        <p *ngIf="!button" class="alert alert-danger">Lütfen Zorunlu Alanları Doldurunuz</p>
+        <button (click)="MeyveEkle()" type="submit"  class="btn btn-primary">Ekle</button>
       </form>
-
+      <app-meyve-liste [meyveler]="meyveler" (myEvent)="delete($event)"></app-meyve-liste>
 </div>

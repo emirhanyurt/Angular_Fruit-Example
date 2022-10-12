@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { MeyveModel } from 'src/models/meyveler';
 
 @Component({
   selector: 'app-root',
@@ -6,31 +8,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- email:string = ""
- password:string =""
- check:boolean = false
- button:boolean = false
+  meyve: string = "";
+  status: boolean = true;
+  meyveler: MeyveModel[] = [];
+
+  /**
+   *
+   */
+  constructor(private toastrService: ToastrService) {
 
 
- checkAvaible(){
-  if(this.email != "" && this.password != "" && this.check )
-  {
-    this.button = true
   }
-  else{
-    this.button = false
+  MeyveEkle() {
+    this.status = true
+    this.meyveler.forEach(element => {
+      if (element.MeyveAd == this.meyve) {
+        this.status = false
+      }
+    });
+    if (this.status) {
+      let meyve = new MeyveModel();
+      meyve.MeyveAd = this.meyve
+      meyve.Tarih = Date()
+      this.meyveler.push(meyve)
+      this.meyve = ""
+      this.toastrService.success("Meyve Başarılı Bir Şekilde Eklendi", "İşlem Başarılı")
+    }
   }
- }
- changeClass(value:string)
+ delete(event:any)
  {
-  if(value != "")
-  {
-    return "form-control succesVali";
-  }
-  else
-  {
-    return "form-control errorVali"
-  }
+   let index:number = this.meyveler.indexOf(event)
+     this.meyveler.splice(index,1)
+     this.toastrService.error(event.MeyveAd+" İsmli Meyve Silindi","Bilgi!")
  }
-
-  }
+}
