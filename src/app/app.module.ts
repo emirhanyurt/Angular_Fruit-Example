@@ -7,19 +7,22 @@ import { ServiceComponent} from './service.component';
 import { ErrorComponent } from './error/error/error.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { SuccsesComponent } from './succses/succes-component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     ServiceComponent,
     AddFormComponent,
     SuccsesComponent,
-    ErrorComponent
+    ErrorComponent,
+    
       
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

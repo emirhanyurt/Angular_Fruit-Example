@@ -7,4 +7,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularExercise';
+  value:string=""
+  /**
+   *
+   */
+  buttonDisable = true
+  constructor() {
+    setTimeout(()=>
+    {
+      this.buttonDisable = false
+    },2000)
+    
+    
 }
+buttonDisabled()
+    {
+      this.buttonDisable = true
+    }
+    getValue()
+    {
+        console.log(this.value)
+    }
+  }
